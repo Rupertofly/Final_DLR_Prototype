@@ -93,7 +93,7 @@ rectangle = new Layer
 	backgroundColor: "rgba(239,239,239,1)"
 	borderRadius: 40
 	borderColor: "rgba(183,183,183,1)"
-	borderWidth: 6
+	borderWidth: 36
 
 label = new TextLayer
 	name: "label"
@@ -109,13 +109,13 @@ label = new TextLayer
 
 #/-
 
-new TextLayer
-
-
 for f in ƒƒ("but*")
-	f.on Events.Tap, (event, layer) ->
+	f.on Events.TouchStart, (event, layer) ->
 		layer.ƒ("rec*").animate
-		 	backgroundColor:"red"
-	f.on Events.Tap, (event, layer) ->
+			image:Utils.randomImage()
+			backgroundColor:Utils.randomColor()
+	f.on Events.TouchEnd, (event, layer) ->
 		layer.ƒ("rec*").animate
-		 	backgroundColor:"red"
+			backgroundColor:"blue"
+
+
