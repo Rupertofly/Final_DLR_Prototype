@@ -2,7 +2,7 @@
   "orientation" : 90,
   "updateDelay" : 0.3,
   "cachedDeviceHeight" : 2048,
-  "contentScale" : 0.5,
+  "contentScale" : 1,
   "cachedDeviceWidth" : 1536,
   "fullScreen" : false,
   "sharedPrototype" : 0,
