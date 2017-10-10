@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>NDOB_i_Pen</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="AB_NDOB" transform="translate(-202.000000, -241.000000)" fill="#C23734">
+            <g id="NDOB_Body" transform="translate(0.000000, 69.000000)">
+                <path d="M261.450692,184.575721 L257.151325,188.875088 L245.124912,176.848675 L249.424279,172.549308 C250.15669,171.816897 251.34315,171.816897 252.075711,172.549308 L261.450692,181.924289 C262.183103,182.6567 262.183103,183.84316 261.450692,184.575721 Z M202.549318,219.424354 C202.197756,219.775915 202,220.251996 202,220.750032 L202,230.125013 C202,231.157724 202.834955,232.000009 203.874996,232.000009 L213.249977,232.000009 C213.748014,232.000009 214.224094,231.802254 214.575656,231.450692 L254.49995,191.526398 L242.473537,179.499985 L202.549318,219.424354 Z" id="NDOB_i_Pen"></path>
+            </g>
+        </g>
+    </g>
+</svg>

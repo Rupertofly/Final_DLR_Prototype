@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="43px" viewBox="0 0 60 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>Contact_i_Letter</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="AB_Contact" transform="translate(-202.000000, -249.000000)" fill="#C23734">
+            <g id="Contact_Body" transform="translate(0.000000, 60.000000)">
+                <path d="M202,189 L202,231.351397 L261.996682,231.351397 L262,189 L202,189 Z M232.000035,210.880426 L215.059477,196.057437 L249.115929,196.057437 L232.000035,210.880426 Z M219.294616,209.116913 L209.060825,219.350705 L209.060825,200.292576 L219.294616,209.116913 Z M224.588541,213.706111 L229.707131,218.116585 C230.411886,218.645978 231.119973,219.000035 232.000035,219.000035 C232.883485,219.000035 233.588213,218.645978 234.29294,218.116585 L238.882137,214.05678 L249.115929,224.290572 L214.000692,224.293819 L224.588541,213.706111 Z M244.351397,209.470971 L254.939246,200.295965 L254.939246,220.237543 L244.351397,209.470971 Z" id="Contact_i_Letter"></path>
+            </g>
+        </g>
+    </g>
+</svg>
