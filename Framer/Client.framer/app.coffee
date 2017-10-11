@@ -1186,7 +1186,6 @@ interp_But_no = new Layer
 	height: 280
 interp_But_no.on Events.Tap, ->
 	data.interp = "none"
-	print data
 	flow.showNext aB_Contact
 
 rectangle_25 = new Layer
@@ -2081,14 +2080,13 @@ nDOB_But_Next = new Layer
 	height: 200
 nDOB_But_Next.on Events.Tap, ->
 	print data.ReadAbility
-	print  data.ReadAbility is ("rGood" or "rFluent")
+	print data.ReadAbility is ("rFluent")
 	if name.value isnt ("Name" or "") and day.value isnt ""
 		data.name = name.value
 		data.Dob = day.value
-		if data.ReadAbility is ("rGood" or "rFluent")
-			if data.SpeakAbility is ("sGood" or "sFluent")
-				flow.showNext aB_Contact
-				data.interp = "none"
+		if data.SpeakAbility == "sGood" or data.SpeakAbility == "sFluent"
+			flow.showNext aB_Contact
+			data.interp = "none"
 		else
 			flow.showNext aB_Interpreter
 
@@ -2198,7 +2196,7 @@ rectangle2_5 = new Layer
 day = new InputModule.Input
 	name: "day"
 	parent: nDOB_But_Day
-	x: 3
+	x: 15
 	y: 12
 	height:100
 	width: 700
@@ -2355,7 +2353,7 @@ rectangle2_8 = new Layer
 	borderWidth: 10
 
 mail = new TextLayer
-	name: "mail"
+	name: "Label"
 	parent: contact_Txt_Mail
 	x: 21
 	y: 12
@@ -2388,7 +2386,7 @@ rectangle2_9 = new Layer
 	borderWidth: 10
 
 email = new TextLayer
-	name: "email"
+	name: "Label"
 	parent: contact_Txt_Email
 	x: 21
 	y: 12
@@ -2421,7 +2419,7 @@ rectangle2_10 = new Layer
 	borderWidth: 10
 
 phone = new TextLayer
-	name: "phone"
+	name: "Label"
 	parent: contact_Txt_Phone
 	x: 21
 	y: 12
@@ -2460,9 +2458,42 @@ contact_i_Phone = new Layer
 	image: "images/Contact_i_Phone.svg"
 
 
-for i in aB_Contact.ƒƒ("Label*")
-	if i.parent.name.match(/txt/)
-		i.parent["inp"+i] = new InputModule
+for i in aB_Contact.ƒƒ("Lab*")
+	reg = /Txt/
+	if reg.test(i.parent.name)
+
+		@["inp_#{i.text}"] = new InputModule.Input
+			name: "inp_#{i.text}"
+			parent: i.parent
+			x: i.x
+			y: i.y
+			width:(i.parent.width - i.x)
+			height: (i.parent.height - i.y)
+			text: i.text
+			setup: false
+			virtualKeyboard: false
+		@["inp_#{i.text}"].style =
+			fontSize: "72px"
+			fontFamily:"Avenir Next"
+			color: "#C98639"
+
+		if i.text is "Phone" then @["inp_#{i.text}"].input.type = "tel"
+		i.visible = false
+
+		if i.text is "Email" then @["inp_#{i.text}"].input.type = "email"
+		if i.text is "Mail" then @["inp_#{i.text}"].input.type = "text"
+
+		@["inp_#{i.text}"].on "input", ->
+			if @value isnt @parent.ƒ("Lab*").text then aB_Contact.contact_But_Next.visible = true
+
+		@["inp_#{i.text}"].on "keyup", (event) ->
+			print @form
+			if event.which is 13 then @input.blur()
+
+		@["inp_#{i.text}"].input.addEventListener "focus",  ->
+			print @parent.ƒ("Lab*").text
+			if @value is @parent.ƒ("Lab*").text then @value = ""
+
 #/AB
 #AB Heading
 aB_Heading = new Layer
