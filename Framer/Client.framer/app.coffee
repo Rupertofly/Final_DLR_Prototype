@@ -4,6 +4,33 @@
 {ƒ,ƒƒ} = require 'findModule'
 flow = new FlowComponent
 
+class GridLayer extends Layer
+	constructor: (opt={})->
+		sizeTemplate = opt.layers[0]
+		opt.backgroundColor ?= ''
+		opt.margin ?= 10
+		opt.marginRow ?= opt.margin
+		opt.marginColumn ?= opt.margin
+		opt.width ?= (sizeTemplate.width+opt.marginColumn)*opt.columns-opt.marginColumn
+		opt.height ?= (sizeTemplate.height+opt.marginRow)*opt.rows-opt.marginRow
+		opt.destroyRemaining ?= true
+
+		super opt
+
+		totalIndex = 0
+
+		for rowIndex in [0...opt.rows]
+			for colIndex in [0...opt.columns]
+				if opt.layers[totalIndex]?
+					cell = opt.layers[totalIndex]
+					cell.superLayer = @
+					cell.x = colIndex * (cell.width + opt.marginColumn)
+					cell.y = rowIndex * (cell.height + opt.marginRow)
+					++totalIndex
+		if opt.destroyRemaining
+			for layer in opt.layers
+				layer.destroy() if layer.superLayer isnt @
+
 InputModule = require "input-framer/input"
 Screen.backgroundColor = "rgba(250,250,250,1)"
 
@@ -1157,6 +1184,10 @@ interp_But_no = new Layer
 	backgroundColor: "transparent"
 	width: 600
 	height: 280
+interp_But_no.on Events.Tap, ->
+	data.interp = "none"
+	print data
+	flow.showNext aB_Contact
 
 rectangle_25 = new Layer
 	name: "rectangle_25"
@@ -1191,7 +1222,8 @@ interp_But_yes = new Layer
 	backgroundColor: "transparent"
 	width: 600
 	height: 280
-
+interp_But_yes.on Events.Tap, ->
+	flow.showOverlayCenter aB_Grid
 rectangle_26 = new Layer
 	name: "rectangle_26"
 	parent: interp_But_yes
@@ -2051,12 +2083,12 @@ nDOB_But_Next.on Events.Tap, ->
 	print data.ReadAbility
 	print  data.ReadAbility is ("rGood" or "rFluent")
 	if name.value isnt ("Name" or "") and day.value isnt ""
-		if name.value = "greg" then print "hey bro"
 		data.name = name.value
 		data.Dob = day.value
 		if data.ReadAbility is ("rGood" or "rFluent")
 			if data.SpeakAbility is ("sGood" or "sFluent")
 				flow.showNext aB_Contact
+				data.interp = "none"
 		else
 			flow.showNext aB_Interpreter
 
@@ -2426,6 +2458,11 @@ contact_i_Phone = new Layer
 	width: 120
 	height: 119.67929470482082
 	image: "images/Contact_i_Phone.svg"
+
+
+for i in aB_Contact.ƒƒ("Label*")
+	if i.parent.name.match(/txt/)
+		i.parent["inp"+i] = new InputModule
 #/AB
 #AB Heading
 aB_Heading = new Layer
@@ -2469,11 +2506,50 @@ app4Aid = new TextLayer
 	textAlign: "left"
 	color: "rgba(74,74,74,1)"
 	#/AB
+#AB Interp Overlay
+InterpArray = []
+langArray = ["Chinese","Thai","Arabic","Spanish","Greek","Vietnamese","Turkish","Persian","Other"]
+for i in [0...9]
+	InterpArray[i] = new Layer
+		name: "But_Lang_#{i}"
+		backgroundColor:"transparent"
+		width:340
+		height:240
+	@["rect"+i] = new Layer
+		name: "rect_#{i}"
+		backgroundColor:"#FEE9E1"
+		borderColor: "#DA734B"
+		borderWidth:6
+		borderRadius:40
+		width:340
+		height:240
+		parent: InterpArray[i]
+	@["label"+i] = new TextLayer
+		name: "label_#{i}"
+		text: langArray[i]
+		fontSize: 56
+		fontFamily: "Avenir Next"
+		fontWeight: 500
+		color: "rgba(74,74,74,1)"
+		parent: InterpArray[i]
+	@["label"+i].center()
+	InterpArray[i].on Events.Tap, ->
+		data.interp = @ƒ("label*").text
+		flow.showPrevious()
+		flow.showNext aB_Contact
+aB_Grid = new GridLayer
+	layers: InterpArray
+	columns: 3
+	rows: 3
+	marginColumn: 50
+	marginRow: 70
+aB_Grid.center()
+#/AB
 # --- Flow Setup
 flow.bringToFront()
 for i in ƒƒ("aB*")
 	i.x = Align.center
-aB_Heading.bringToFront();
+aB_Heading.bringToFront()
 aB_Splash.bringToFront()
 flow.x = (Screen.width - aB_Splash.width)/2
 flow.showNext(aB_Splash, scroll:false)
