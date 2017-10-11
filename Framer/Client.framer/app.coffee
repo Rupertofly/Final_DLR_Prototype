@@ -714,6 +714,9 @@ readSpeak_But_rNone = new Layer
 	backgroundColor: "transparent"
 	width: 282
 	height: 120
+readSpeak_But_rNone.on Events.Tap, ->
+	RVals = changeSel RVals, "rNone"
+	updateSel()
 
 rectangle_15 = new Layer
 	name: "rectangle_15"
@@ -748,6 +751,9 @@ readSpeak_But_sNone = new Layer
 	backgroundColor: "transparent"
 	width: 282
 	height: 120
+readSpeak_But_sNone.on Events.Tap, ->
+	SVals = changeSel SVals, "sNone"
+	updateSel()
 
 rectangle_16 = new Layer
 	name: "rectangle_16"
@@ -782,6 +788,9 @@ readSpeak_But_rSomewhat = new Layer
 	backgroundColor: "transparent"
 	width: 282
 	height: 120
+readSpeak_But_rSomewhat.on Events.Tap, ->
+	RVals = changeSel RVals, "rSomewhat"
+	updateSel()
 
 rectangle_17 = new Layer
 	name: "rectangle_17"
@@ -816,6 +825,9 @@ readSpeak_But_sSomewhat = new Layer
 	backgroundColor: "transparent"
 	width: 282
 	height: 120
+readSpeak_But_sSomewhat.on Events.Tap, ->
+	SVals = changeSel SVals, "sSomewhat"
+	updateSel()
 
 rectangle_18 = new Layer
 	name: "rectangle_18"
@@ -850,6 +862,9 @@ readSpeak_But_rGood = new Layer
 	backgroundColor: "transparent"
 	width: 282
 	height: 120
+readSpeak_But_rGood.on Events.Tap, ->
+	RVals = changeSel RVals, "rGood"
+	updateSel()
 
 rectangle_19 = new Layer
 	name: "rectangle_19"
@@ -885,7 +900,7 @@ readSpeak_But_sGood = new Layer
 	width: 282
 	height: 120
 readSpeak_But_sGood.on Events.Tap, ->
-	SVals = changeSel(SVals,"rGood")
+	SVals = changeSel(SVals,"sGood")
 	updateSel()
 
 rectangle_20 = new Layer
@@ -948,7 +963,7 @@ label_21 = new TextLayer
 	fontFamily: "Avenir Next"
 	fontWeight: 500
 	textAlign: "center"
-	color: "rgba(74,74,74,1)"
+	color: "rgba(71,71,71,1)"
 
 readSpeak_But_sFluent = new Layer
 	name: "readSpeak_But_sFluent"
@@ -959,9 +974,7 @@ readSpeak_But_sFluent = new Layer
 	width: 282
 	height: 120
 readSpeak_But_sFluent.on Events.Tap, ->
-	print @SVals
 	SVals = changeSel(SVals,"sFluent")
-	print SVals
 	updateSel()
 
 rectangle_22 = new Layer
@@ -987,7 +1000,7 @@ label_22 = new TextLayer
 	fontFamily: "Avenir Next"
 	fontWeight: 500
 	textAlign: "center"
-	color: "rgba(140,131,121,1)"
+	color: "rgba(74,74,74,1)"
 
 readSpeak_But_Next = new Layer
 	name: "readSpeak_But_Next"
@@ -997,6 +1010,16 @@ readSpeak_But_Next = new Layer
 	backgroundColor: "transparent"
 	width: 440
 	height: 200
+readSpeak_But_Next.on Events.Tap, ->
+	for k,v of RVals
+		if v is 1 then rAb = k
+	for k,v of SVals
+		if v is 1 then sAb = k
+	data.ReadAbility = rAb
+	data.SpeakAbility = sAb
+	print data
+	flow.showNext aB_NDOB
+
 
 rectangle_23 = new Layer
 	name: "rectangle_23"
@@ -1008,7 +1031,7 @@ rectangle_23 = new Layer
 	backgroundColor: "rgba(250,242,232,1)"
 	borderRadius: 40
 	borderColor: "rgba(151,151,151,1)"
-	borderWidth: 2
+	borderWidth: 6
 
 label_23 = new TextLayer
 	name: "label_23"
@@ -1022,31 +1045,25 @@ label_23 = new TextLayer
 	textAlign: "center"
 	color: "rgba(71,71,71,1)"
 
+aB_ReadSpeak.ƒ("*Next").visible = false
+R_Filled = false
+S_Filled = false
+ReadSpeak_Filled = false
 changeSel = (arr,nw) ->
 	for but,val of arr
-		if but is nw then arr[but]  = 1
-		if but isnt nw then arr[but] = 0
-	print arr
+		if but is nw then arr[but]  = 1 else arr[but] = 0
 	return arr
 updateSel = () ->
 	for i,j of RVals
-		if j is 0
-			aB_ReadSpeak.ƒ("*#{i}").ƒ("rec*").animate backgroundColor:"#EFEFEF"
-		if j is 1
-			aB_ReadSpeak.ƒ("*#{i}").ƒ("rec*").animate backgroundColor:"#F56A67"
+		R_Filled = 1 if j is 1
+		if j is 0 then aB_ReadSpeak.ƒ("*#{i}").ƒ("rec*").borderColor = "#EFEFEF"
+		if j is 1 then aB_ReadSpeak.ƒ("*#{i}").ƒ("rec*").borderColor = "#F56A67"
 	for i,j of SVals
-		if j is 0 then aB_ReadSpeak.ƒ("*#{i}").ƒ("rec*").animate
-			backgroundColor:"#EFEFEF"
-			options:
-				time:0.05
-		if j is 1 then aB_ReadSpeak.ƒ("*#{i}").ƒ("rec*").animate
-			backgroundColor:"#F56A67"
-			options:
-				time:0.05
-		print "*#{i}"
-		print j
-
-SVals = changeSel(SVals,"sGood")
+		S_Filled = 1 if j is 1
+		if j is 0 then aB_ReadSpeak.ƒ("*#{i}").ƒ("rec*").borderColor = "#EFEFEF"
+		if j is 1 then aB_ReadSpeak.ƒ("*#{i}").ƒ("rec*").borderColor = "#F56A67"
+	ReadSpeak_Filled = true if S_Filled is 1 and R_Filled is 1
+	aB_ReadSpeak.ƒ("*Next").visible = ReadSpeak_Filled
 updateSel()
 
 #/AB
@@ -1077,8 +1094,8 @@ bG_5 = new Layer
 	height: 1416
 	backgroundColor: "rgba(250,250,250,1)"
 
-but_back = new Layer
-	name: "but_back"
+interp_But_Back = new Layer
+	name: "interp_But_Back"
 	parent: interp_body
 	x: 404
 	y: 1158
@@ -1088,7 +1105,7 @@ but_back = new Layer
 
 rectangle_24 = new Layer
 	name: "rectangle_24"
-	parent: but_back
+	parent: interp_But_Back
 	x: 0
 	y: 0
 	width: 440
@@ -1100,7 +1117,7 @@ rectangle_24 = new Layer
 
 label_24 = new TextLayer
 	name: "label_24"
-	parent: but_back
+	parent: interp_But_Back
 	x: 158
 	y: 28
 	width: 124
@@ -1937,6 +1954,7 @@ hoursPerWeek = new TextLayer
 	color: "rgba(247,203,119,1)"
 #/AB
 #AB NDOB
+
 aB_NDOB = new Layer
 	name: "aB_NDOB"
 	x: 0
@@ -2029,6 +2047,18 @@ nDOB_But_Next = new Layer
 	backgroundColor: "transparent"
 	width: 440
 	height: 200
+nDOB_But_Next.on Events.Tap, ->
+	print data.ReadAbility
+	print  data.ReadAbility is ("rGood" or "rFluent")
+	if name.value isnt ("Name" or "") and day.value isnt ""
+		if name.value = "greg" then print "hey bro"
+		data.name = name.value
+		data.Dob = day.value
+		if data.ReadAbility is ("rGood" or "rFluent")
+			if data.SpeakAbility is ("sGood" or "sFluent")
+				flow.showNext aB_Contact
+		else
+			flow.showNext aB_Interpreter
 
 rectangle_41 = new Layer
 	name: "rectangle_41"
@@ -2040,7 +2070,7 @@ rectangle_41 = new Layer
 	backgroundColor: "rgba(250,242,232,1)"
 	borderRadius: 40
 	borderColor: "rgba(151,151,151,1)"
-	borderWidth: 2
+	borderWidth: 6
 
 label_41 = new TextLayer
 	name: "label_41"
@@ -2093,25 +2123,32 @@ rectangle2_4 = new Layer
 	borderColor: "rgba(245,190,85,1)"
 	borderWidth: 10
 
-name = new TextLayer
+name = new InputModule.Input
 	name: "name"
 	parent: nDOB_text_Name
 	x: 21
-	y: 12
+	y: 0
+	height: 120
+	virtualKeyboard: false
 	text: "Name"
-	fontSize: 72
+	textColour: "#C98639"
+	fontSize: "72"
 	fontFamily: "Avenir Next"
-	fontWeight: 400
+	fontWeight: "400"
 	textAlign: "center"
 	color: "rgba(247,203,119,1)"
+name.style =
+	fontSize: "72px"
+	color:"#C98639"
+	fontWeight: "400"
 
 nDOB_But_Day = new Layer
 	name: "nDOB_But_Day"
 	parent: nDOB_Body
-	x: 564
+	x: Align.center
 	y: 822
 	backgroundColor: "transparent"
-	width: 278
+	width: 700
 	height: 120
 
 rectangle2_5 = new Layer
@@ -2119,90 +2156,44 @@ rectangle2_5 = new Layer
 	parent: nDOB_But_Day
 	x: 0
 	y: 0
-	width: 278
+	width: 700
 	height: 120
 	backgroundColor: "rgba(221,240,249,1)"
 	borderRadius: 20
 	borderColor: "rgba(57,151,192,1)"
 	borderWidth: 10
 
-day = new TextLayer
+day = new InputModule.Input
 	name: "day"
 	parent: nDOB_But_Day
-	x: 74
+	x: 3
 	y: 12
-	text: "Day"
+	height:100
+	width: 700
+	text: "DOB"
+	type: "date"
 	fontSize: 72
 	fontFamily: "Avenir Next"
 	fontWeight: 400
 	textAlign: "center"
 	color: "rgba(171,218,239,1)"
-
-nDOB_But_Month = new Layer
-	name: "nDOB_But_Month"
-	parent: nDOB_Body
-	x: 964
-	y: 822
-	backgroundColor: "transparent"
-	width: 278
-	height: 120
-
-rectangle2_6 = new Layer
-	name: "rectangle2_6"
-	parent: nDOB_But_Month
-	x: 0
-	y: 0
-	width: 278
-	height: 120
-	backgroundColor: "rgba(221,240,249,1)"
-	borderRadius: 20
-	borderColor: "rgba(57,151,192,1)"
-	borderWidth: 10
-
-day_2 = new TextLayer
-	name: "day_2"
-	parent: nDOB_But_Month
-	x: 31
-	y: 12
-	text: "Month"
-	fontSize: 72
-	fontFamily: "Avenir Next"
-	fontWeight: 400
-	textAlign: "center"
-	color: "rgba(171,218,239,1)"
-
-nDOB_But_Year = new Layer
-	name: "nDOB_But_Year"
-	parent: nDOB_Body
-	x: 1366
-	y: 822
-	backgroundColor: "transparent"
-	width: 278
-	height: 120
-
-rectangle2_7 = new Layer
-	name: "rectangle2_7"
-	parent: nDOB_But_Year
-	x: 0
-	y: 0
-	width: 278
-	height: 120
-	backgroundColor: "rgba(221,240,249,1)"
-	borderRadius: 20
-	borderColor: "rgba(57,151,192,1)"
-	borderWidth: 10
-
-day_3 = new TextLayer
-	name: "day_3"
-	parent: nDOB_But_Year
-	x: 68
-	y: 12
-	text: "Year"
-	fontSize: 72
-	fontFamily: "Avenir Next"
-	fontWeight: 400
-	textAlign: "center"
-	color: "rgba(171,218,239,1)"
+day.style =
+	fontSize: "72px"
+	color: "#2582AB"
+	fontWeight: "400"
+day.input.max = "2010-01-01"
+day.input.value = "2010-01-01"
+nDOB_But_Next.visible = false
+day.on "input", ->
+	if name.value isnt ("Name" or "") and day.value isnt ""
+		nDOB_But_Next.visible = true
+name.on "input", ->
+	if name.value isnt ("Name" or "") and day.value isnt ""
+		nDOB_But_Next.visible = true
+name.on "keyup", (event) ->
+	if event.which is 13 then name.input.blur()
+name.onFocus ->
+	if @value is "Name" then @value = ""
 #/AB
 #AB Contact
 aB_Contact = new Layer
@@ -2512,6 +2503,6 @@ for i in ƒƒ("*But_*")
 	if (i.name.match(/Back$/))
 		i.on Events.Tap, ->
 			do flow.showPrevious
-Utils.interval 10, ->
-	print data
+	if (i.name.match(/Next$/))
+		i.ƒ("rec*").borderWidth = 6
 #/-
