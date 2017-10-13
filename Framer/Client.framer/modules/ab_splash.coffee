@@ -1,4 +1,6 @@
-aB_Splash = new Layer
+{ƒ, ƒƒ} = require 'findModule'
+
+window.aB_Splash = new Layer
 	name: "aB_Splash"
 	x: 0
 	y: 0
@@ -6,7 +8,7 @@ aB_Splash = new Layer
 	width: 2048
 	height: 1536
 
-splash_Body = new Layer
+window.splash_Body = new Layer
 	name: "splash_Body"
 	parent: aB_Splash
 	x: 0
@@ -15,7 +17,7 @@ splash_Body = new Layer
 	width: 2048
 	height: 1416
 
-bG = new Layer
+window.bG = new Layer
 	name: "bG"
 	parent: splash_Body
 	x: 0
@@ -24,7 +26,7 @@ bG = new Layer
 	height: 1416
 	backgroundColor: "rgba(250,250,250,1)"
 
-splash_i_Logo = new Layer
+window.splash_i_Logo = new Layer
 	name: "splash_i_Logo"
 	parent: splash_Body
 	x: 884
@@ -33,7 +35,7 @@ splash_i_Logo = new Layer
 	height: 276
 	image: "images/Splash_i_Logo.svg"
 
-splash_t_Title = new TextLayer
+window.splash_t_Title = new TextLayer
 	name: "splash_t_Title"
 	parent: splash_Body
 	x: 564
@@ -46,7 +48,7 @@ splash_t_Title = new TextLayer
 	textAlign: "center"
 	color: "rgba(74,74,74,1)"
 
-splash_t_Heading = new TextLayer
+window.splash_t_Heading = new TextLayer
 	name: "splash_t_Heading"
 	parent: splash_Body
 	x: 564
@@ -59,7 +61,7 @@ splash_t_Heading = new TextLayer
 	textAlign: "center"
 	color: "rgba(74,74,74,1)"
 
-splash_But_Begin = new Layer
+window.splash_But_Begin = new Layer
 	name: "splash_But_Begin"
 	parent: splash_Body
 	x: 724
@@ -68,8 +70,11 @@ splash_But_Begin = new Layer
 	width: 600
 	height: 280
 
+window.splash_But_Begin.on Events.Tap, ->
+	flow.showNext ƒ("aB_Language")
 
-rectangle = new Layer
+
+window.rectangle = new Layer
 	name: "rectangle"
 	parent: splash_But_Begin
 	x: 0
@@ -81,7 +86,7 @@ rectangle = new Layer
 	borderColor: "rgba(183,183,183,1)"
 	borderWidth: 6
 
-label = new TextLayer
+window.label = new TextLayer
 	name: "label"
 	parent: splash_But_Begin
 	x: 202

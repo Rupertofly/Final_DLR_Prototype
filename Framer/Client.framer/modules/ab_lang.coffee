@@ -1,4 +1,6 @@
-aB_Language = new Layer
+{ƒ, ƒƒ} = require 'findModule'
+InputModule = require "input-framer/input"
+window.aB_Language = new Layer
 	name: "aB_Language"
 	x: 0
 	y: 0
@@ -34,7 +36,7 @@ language_But_English = new Layer
 	height: 200
 language_But_English.on Events.Tap, ->
 	data.language = "English"
-	flow.showNext aB_Help, scroll:false
+	flow.showNext ƒ("aB_Help"), scroll: false
 
 rectangle_2 = new Layer
 	name: "rectangle_2"

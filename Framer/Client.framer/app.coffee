@@ -3,7 +3,7 @@
 
 # --- Setup
 {ƒ, ƒƒ} = require 'findModule'
-flow = new FlowComponent
+window.flow = new FlowComponent
 
 
 class GridLayer extends Layer
@@ -36,590 +36,16 @@ class GridLayer extends Layer
 InputModule = require "input-framer/input"
 Screen.backgroundColor = "rgba(250,250,250,1)"
 
-data = {}
+window.data = {}
 
 #region Splash
-aB_Splash = new Layer
-  name: "aB_Splash"
-  x: 0
-  y: 0
-  backgroundColor: "transparent"
-  width: 2048
-  height: 1536
-
-splash_Body = new Layer
-  name: "splash_Body"
-  parent: aB_Splash
-  x: 0
-  y: 138
-  backgroundColor: "transparent"
-  width: 2048
-  height: 1416
-
-bG = new Layer
-  name: "bG"
-  parent: splash_Body
-  x: 0
-  y: 0
-  width: 2048
-  height: 1416
-  backgroundColor: "rgba(250,250,250,1)"
-
-splash_i_Logo = new Layer
-  name: "splash_i_Logo"
-  parent: splash_Body
-  x: 884
-  y: 22
-  width: 276
-  height: 276
-  image: "images/Splash_i_Logo.svg"
-
-splash_t_Title = new TextLayer
-  name: "splash_t_Title"
-  parent: splash_Body
-  x: 564
-  y: 342
-  width: 918.8536370080562
-  text: "Victoria Legal Aid"
-  fontSize: 72
-  fontFamily: "Avenir Next"
-  fontWeight: 700
-  textAlign: "center"
-  color: "rgba(74,74,74,1)"
-
-splash_t_Heading = new TextLayer
-  name: "splash_t_Heading"
-  parent: splash_Body
-  x: 564
-  y: 504
-  width: 917.886927759102
-  text: "Duty Lawyer Service Application for Aid"
-  fontSize: 72
-  fontFamily: "Avenir Next"
-  fontWeight: 600
-  textAlign: "center"
-  color: "rgba(74,74,74,1)"
-
-splash_But_Begin = new Layer
-  name: "splash_But_Begin"
-  parent: splash_Body
-  x: 724
-  y: 822
-  backgroundColor: "transparent"
-  width: 600
-  height: 280
-
-splash_But_Begin.on Events.Tap, ->
-  flow.showNext aB_Language
-
-
-rectangle = new Layer
-  name: "rectangle"
-  parent: splash_But_Begin
-  x: 0
-  y: 0
-  width: 600
-  height: 280
-  backgroundColor: "rgba(239,239,239,1)"
-  borderRadius: 40
-  borderColor: "rgba(183,183,183,1)"
-  borderWidth: 6
-
-label = new TextLayer
-  name: "label"
-  parent: splash_But_Begin
-  x: 202
-  y: 86
-  text: "Begin"
-  fontSize: 72
-  fontFamily: "Avenir Next"
-  fontWeight: 600
-  textAlign: "center"
-  color: "rgba(74,74,74,1)"
+ab_splash = require "ab_splash"
 #endregion
 #region Language
-aB_Language = new Layer
-  name: "aB_Language"
-  x: 0
-  y: 0
-  backgroundColor: "transparent"
-  width: 2048
-  height: 1536
-
-language_Body = new Layer
-  name: "language_Body"
-  parent: aB_Language
-  x: 0
-  y: 138
-  backgroundColor: "transparent"
-  width: 2048
-  height: 1416
-
-bG_2 = new Layer
-  name: "bG_2"
-  parent: language_Body
-  x: 0
-  y: 0
-  width: 2048
-  height: 1416
-  backgroundColor: "rgba(250,250,250,1)"
-
-language_But_English = new Layer
-  name: "language_But_English"
-  parent: language_Body
-  x: 244
-  y: 342
-  backgroundColor: "transparent"
-  width: 440
-  height: 200
-language_But_English.on Events.Tap, ->
-  data.language = "English"
-  flow.showNext aB_Help, scroll: false
-
-rectangle_2 = new Layer
-  name: "rectangle_2"
-  parent: language_But_English
-  x: 0
-  y: 0
-  width: 440
-  height: 200
-  backgroundColor: "rgba(254,233,225,1)"
-  borderRadius: 40
-  borderColor: "rgba(218,115,75,1)"
-  borderWidth: 6
-
-label_2 = new TextLayer
-  name: "label_2"
-  parent: language_But_English
-  x: 125
-  y: 62
-  text: "English"
-  fontSize: 56
-  fontFamily: "Avenir Next"
-  fontWeight: 500
-  textAlign: "center"
-  color: "rgba(74,74,74,1)"
-
-language_But_Chinese = new Layer
-  name: "language_But_Chinese"
-  parent: language_Body
-  x: 244
-  y: 622
-  backgroundColor: "transparent"
-  width: 440
-  height: 200
-
-rectangle_3 = new Layer
-  name: "rectangle_3"
-  parent: language_But_Chinese
-  x: 0
-  y: 0
-  width: 440
-  height: 200
-  backgroundColor: "rgba(254,233,225,1)"
-  borderRadius: 40
-  borderColor: "rgba(218,115,75,1)"
-  borderWidth: 6
-
-label_3 = new TextLayer
-  name: "label_3"
-  parent: language_But_Chinese
-  x: 164
-  y: 62
-  text: "中文"
-  fontSize: 56
-  fontFamily: "Avenir Next"
-  fontWeight: 500
-  textAlign: "center"
-  color: "rgba(74,74,74,1)"
-
-language_But_Thai = new Layer
-  name: "language_But_Thai"
-  parent: language_Body
-  x: 244
-  y: 902
-  backgroundColor: "transparent"
-  width: 440
-  height: 200
-
-rectangle_4 = new Layer
-  name: "rectangle_4"
-  parent: language_But_Thai
-  x: 0
-  y: 0
-  width: 440
-  height: 200
-  backgroundColor: "rgba(254,233,225,1)"
-  borderRadius: 40
-  borderColor: "rgba(218,115,75,1)"
-  borderWidth: 6
-
-label_4 = new TextLayer
-  name: "label_4"
-  parent: language_But_Thai
-  x: 101
-  y: 62
-  text: "ไทย – ไทย"
-  fontSize: 56
-  fontFamily: "Avenir Next"
-  fontWeight: 500
-  textAlign: "center"
-  color: "rgba(74,74,74,1)"
-
-language_But_Arabic = new Layer
-  name: "language_But_Arabic"
-  parent: language_Body
-  x: 804
-  y: 342
-  backgroundColor: "transparent"
-  width: 440
-  height: 200
-
-rectangle_5 = new Layer
-  name: "rectangle_5"
-  parent: language_But_Arabic
-  x: 0
-  y: 0
-  width: 440
-  height: 200
-  backgroundColor: "rgba(254,233,225,1)"
-  borderRadius: 40
-  borderColor: "rgba(218,115,75,1)"
-  borderWidth: 6
-
-label_5 = new TextLayer
-  name: "label_5"
-  parent: language_But_Arabic
-  x: 158
-  y: 62
-  text: "عربي"
-  fontSize: 56
-  fontFamily: "Avenir Next"
-  fontWeight: 500
-  textAlign: "center"
-  color: "rgba(74,74,74,1)"
-
-language_But_Spanish = new Layer
-  name: "language_But_Spanish"
-  parent: language_Body
-  x: 804
-  y: 622
-  backgroundColor: "transparent"
-  width: 440
-  height: 200
-
-rectangle_6 = new Layer
-  name: "rectangle_6"
-  parent: language_But_Spanish
-  x: 0
-  y: 0
-  width: 440
-  height: 200
-  backgroundColor: "rgba(254,233,225,1)"
-  borderRadius: 40
-  borderColor: "rgba(218,115,75,1)"
-  borderWidth: 6
-
-label_6 = new TextLayer
-  name: "label_6"
-  parent: language_But_Spanish
-  x: 117
-  y: 62
-  text: "Español"
-  fontSize: 56
-  fontFamily: "Avenir Next"
-  fontWeight: 500
-  textAlign: "center"
-  color: "rgba(74,74,74,1)"
-
-language_But_Greek = new Layer
-  name: "language_But_Greek"
-  parent: language_Body
-  x: 804
-  y: 902
-  backgroundColor: "transparent"
-  width: 440
-  height: 200
-
-rectangle_7 = new Layer
-  name: "rectangle_7"
-  parent: language_But_Greek
-  x: 0
-  y: 0
-  width: 440
-  height: 200
-  backgroundColor: "rgba(254,233,225,1)"
-  borderRadius: 40
-  borderColor: "rgba(218,115,75,1)"
-  borderWidth: 6
-
-label_7 = new TextLayer
-  name: "label_7"
-  parent: language_But_Greek
-  x: 102
-  y: 62
-  text: "Ελληvικά"
-  fontSize: 56
-  fontFamily: "Avenir Next"
-  fontWeight: 500
-  textAlign: "center"
-  color: "rgba(74,74,74,1)"
-
-language_But_Viet = new Layer
-  name: "language_But_Viet"
-  parent: language_Body
-  x: 1364
-  y: 342
-  backgroundColor: "transparent"
-  width: 440
-  height: 200
-
-rectangle_8 = new Layer
-  name: "rectangle_8"
-  parent: language_But_Viet
-  x: 0
-  y: 0
-  width: 440
-  height: 200
-  backgroundColor: "rgba(254,233,225,1)"
-  borderRadius: 40
-  borderColor: "rgba(218,115,75,1)"
-  borderWidth: 6
-
-label_8 = new TextLayer
-  name: "label_8"
-  parent: language_But_Viet
-  x: 110
-  y: 62
-  text: "Việt-ngữ"
-  fontSize: 56
-  fontFamily: "Avenir Next"
-  fontWeight: 500
-  textAlign: "center"
-  color: "rgba(74,74,74,1)"
-
-language_But_Turkish = new Layer
-  name: "language_But_Turkish"
-  parent: language_Body
-  x: 1364
-  y: 622
-  backgroundColor: "transparent"
-  width: 440
-  height: 200
-
-rectangle_9 = new Layer
-  name: "rectangle_9"
-  parent: language_But_Turkish
-  x: 0
-  y: 0
-  width: 440
-  height: 200
-  backgroundColor: "rgba(254,233,225,1)"
-  borderRadius: 40
-  borderColor: "rgba(218,115,75,1)"
-  borderWidth: 6
-
-label_9 = new TextLayer
-  name: "label_9"
-  parent: language_But_Turkish
-  x: 135
-  y: 62
-  text: "Türkçe"
-  fontSize: 56
-  fontFamily: "Avenir Next"
-  fontWeight: 500
-  textAlign: "center"
-  color: "rgba(74,74,74,1)"
-
-language_But_Persian = new Layer
-  name: "language_But_Persian"
-  parent: language_Body
-  x: 1364
-  y: 902
-  backgroundColor: "transparent"
-  width: 440
-  height: 200
-
-rectangle_10 = new Layer
-  name: "rectangle_10"
-  parent: language_But_Persian
-  x: 0
-  y: 0
-  width: 440
-  height: 200
-  backgroundColor: "rgba(254,233,225,1)"
-  borderRadius: 40
-  borderColor: "rgba(218,115,75,1)"
-  borderWidth: 6
-
-label_10 = new TextLayer
-  name: "label_10"
-  parent: language_But_Persian
-  x: 151
-  y: 62
-  text: "فار س"
-  fontSize: 56
-  fontFamily: "Avenir Next"
-  fontWeight: 500
-  textAlign: "center"
-  color: "rgba(74,74,74,1)"
-
+ab_lang = require "ab_lang"
 #endregion
 #region Help
-aB_Help = new Layer
-  name: "aB_Help"
-  x: 0
-  y: 0
-  backgroundColor: "transparent"
-  width: 2048
-  height: 1536
-
-help_Body = new Layer
-  name: "help_Body"
-  parent: aB_Help
-  x: 0
-  y: 122
-  backgroundColor: "transparent"
-  width: 2048
-  height: 1416
-
-bG_3 = new Layer
-  name: "bG_3"
-  parent: help_Body
-  x: 0
-  y: 0
-  width: 2048
-  height: 1416
-  backgroundColor: "rgba(250,250,250,1)"
-
-help_t_Help = new TextLayer
-  name: "help_t_Help"
-  parent: help_Body
-  x: 300
-  y: 420
-  text: "Is Someone Helping you Fill Out This Form?"
-  fontSize: 72
-  fontFamily: "Avenir Next"
-  fontWeight: 600
-  textAlign: "center"
-  color: "rgba(74,74,74,1)"
-
-help_i_Buoy = new Layer
-  name: "help_i_Buoy"
-  parent: help_Body
-  x: 884
-  y: 78
-  width: 280
-  height: 280
-  image: "images/Help_i_Buoy.svg"
-
-help_But_Back = new Layer
-  name: "help_But_Back"
-  parent: help_Body
-  x: 404
-  y: 1158
-  backgroundColor: "transparent"
-  width: 440
-  height: 120
-
-rectangle_11 = new Layer
-  name: "rectangle_11"
-  parent: help_But_Back
-  x: 0
-  y: 0
-  width: 440
-  height: 120
-  backgroundColor: "rgba(221,240,249,1)"
-  borderRadius: 40
-  borderColor: "rgba(119,131,136,1)"
-  borderWidth: 6
-
-label_11 = new TextLayer
-  name: "label_11"
-  parent: help_But_Back
-  x: 158
-  y: 28
-  width: 124
-  text: "Back"
-  fontSize: 56
-  fontFamily: "Avenir Next"
-  fontWeight: 500
-  textAlign: "center"
-  color: "rgba(74,74,74,1)"
-
-help_But_No = new Layer
-  name: "help_But_No"
-  parent: help_Body
-  x: 1204
-  y: 678
-  backgroundColor: "transparent"
-  width: 600
-  height: 280
-help_But_No.on Events.Tap, ->
-  data.help = false
-  flow.showNext aB_ReadSpeak
-
-rectangle_12 = new Layer
-  name: "rectangle_12"
-  parent: help_But_No
-  x: 0
-  y: 0
-  width: 600
-  height: 280
-  backgroundColor: "rgba(253,225,225,1)"
-  borderRadius: 40
-  borderColor: "rgba(194,55,52,1)"
-  borderWidth: 6
-
-label_12 = new TextLayer
-  name: "label_12"
-  parent: help_But_No
-  x: 0
-  y: 0
-  width: 600
-  text: "No"
-  fontSize: 72
-  fontFamily: "Avenir Next"
-  fontWeight: 600
-  textAlign: "center"
-  color: "rgba(194,55,52,1)"
-
-help_But_Yes = new Layer
-  name: "help_But_Yes"
-  parent: help_Body
-  x: 244
-  y: 678
-  backgroundColor: "transparent"
-  width: 600
-  height: 280
-help_But_Yes.on Events.Tap, ->
-  data.help = true
-  flow.showNext aB_ReadSpeak
-
-rectangle_13 = new Layer
-  name: "rectangle_13"
-  parent: help_But_Yes
-  x: 0
-  y: 0
-  width: 600
-  height: 280
-  backgroundColor: "rgba(232,245,230,1)"
-  borderRadius: 40
-  borderColor: "rgba(108,176,101,1)"
-  borderWidth: 6
-
-label_13 = new TextLayer
-  name: "label_13"
-  parent: help_But_Yes
-  x: 0
-  y: 0
-  width: 600
-  text: "Yes"
-  fontSize: 72
-  fontFamily: "Avenir Next"
-  fontWeight: 600
-  textAlign: "center"
-  color: "rgba(87,155,81,1)"
+ab_help = require "ab_help"
 #endregion
 #region ReadSpeak
 RVals =
@@ -1047,7 +473,7 @@ readSpeak_But_Next.on Events.Tap, ->
   data.ReadAbility = rAb
   data.SpeakAbility = sAb
   print data
-  flow.showNext aB_NDOB
+  flow.showNext ƒ("aB_NDOB")
 
 
 rectangle_23 = new Layer
@@ -1188,7 +614,7 @@ interp_But_no = new Layer
   height: 280
 interp_But_no.on Events.Tap, ->
   data.interp = "none"
-  flow.showNext aB_Contact
+  flow.showNext ƒ("aB_Contact")
 
 rectangle_25 = new Layer
   name: "rectangle_25"
@@ -1224,7 +650,7 @@ interp_But_yes = new Layer
   width: 600
   height: 280
 interp_But_yes.on Events.Tap, ->
-  flow.showOverlayCenter aB_Grid
+  flow.showOverlayCenter ƒ("aB_Grid")
 rectangle_26 = new Layer
   name: "rectangle_26"
   parent: interp_But_yes
@@ -1654,9 +1080,9 @@ for i in aB_Employment.ƒƒ("*But*")
       val = (@name.split "_")[2]
       data.employment = val
       print data
-      if /[Uu]n/.test(val) then flow.showNext(check)
-      else if /Casual/i.test(val) then flow.showNext(aB_HourIncome)
-      else flow.showNext(aB_WeekIncome)
+      if /[Uu]n/.test(val) then flow.showNext(ƒ("check"))
+      else if /Casual/i.test(val) then flow.showNext(ƒ("aB_HourIncome"))
+      else flow.showNext(ƒ("aB_WeekIncome"))
 #endregion
 
 #region WeekIncome
@@ -2102,10 +1528,10 @@ nDOB_But_Next.on Events.Tap, ->
     data.name = name.value
     data.Dob = day.value
     if data.SpeakAbility == "sGood" or data.SpeakAbility == "sFluent"
-      flow.showNext aB_Contact
+      flow.showNext ƒ("aB_Contact")
       data.interp = "none"
     else
-      flow.showNext aB_Interpreter
+      flow.showNext ƒ("aB_Interpreter")
 
 rectangle_41 = new Layer
   name: "rectangle_41"
@@ -2328,7 +1754,7 @@ contact_But_Next.onTap ->
   data.mail = ƒ("inp_Mail").value
   data.email = ƒ("inp_Email").value
   data.phone = ƒ("inp_Phone").value
-  flow.showNext aB_Employment
+  flow.showNext ƒ("aB_Employment")
 
 rectangle_43 = new Layer
   name: "rectangle_43"
@@ -2593,7 +2019,7 @@ for i in [0...9]
   InterpArray[i].on Events.Tap, ->
     data.interp = @ƒ("label*").text
     flow.showPrevious()
-    flow.showNext aB_Contact
+    flow.showNext ƒ("aB_Contact")
 aB_Grid = new GridLayer
   layers: InterpArray
   columns: 3
@@ -2604,7 +2030,7 @@ aB_Grid.center()
 #endregion
 check = aB_WeekIncome.copy()
 #region flow setup
-flow.bringToFront()
+window.flow.bringToFront()
 for i in ƒƒ("aB*")
   i.x = Align.center
 aB_Heading.bringToFront()
