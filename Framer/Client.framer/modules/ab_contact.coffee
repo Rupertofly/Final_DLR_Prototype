@@ -86,7 +86,7 @@ contact_But_Next.onTap ->
   data.mail = ƒ("inp_Mail").value
   data.email = ƒ("inp_Email").value
   data.phone = ƒ("inp_Phone").value
-  flow.showNext ƒ("aB_Employment")
+  flow.showNext ƒ("aB_Concession")
 
 rectangle_43 = new Layer
   name: "rectangle_43"

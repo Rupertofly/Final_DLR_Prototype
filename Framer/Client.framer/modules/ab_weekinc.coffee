@@ -77,6 +77,7 @@ weekIncome_i_briefcase = new Layer
   y: 68
   width: 200
   height: 180.69020689655176
+  image: "images/Employment_i_Breifcase.svg"
 
 weekIncome_But_Next = new Layer
   name: "weekIncome_But_Next"
@@ -111,35 +112,3 @@ label_37 = new TextLayer
   textAlign: "center"
   color: "rgba(71,71,71,1)"
 
-weekIncome_Txt_Income = new Layer
-  name: "weekIncome_Txt_Income"
-  parent: weekIncome_Body
-  x: 484
-  y: 586
-  backgroundColor: "transparent"
-  width: 1080
-  height: 120
-
-rectangle2 = new Layer
-  name: "rectangle2"
-  parent: weekIncome_Txt_Income
-  x: 0
-  y: 0
-  width: 1080
-  height: 120
-  backgroundColor: "rgba(253,245,228,1)"
-  borderRadius: 10
-  borderColor: "rgba(245,190,85,1)"
-  borderWidth: 10
-
-weeklyIncome = new TextLayer
-  name: "weeklyIncome"
-  parent: weekIncome_Txt_Income
-  x: 21
-  y: 12
-  text: "Weekly Income"
-  fontSize: 72
-  fontFamily: "Avenir Next"
-  fontWeight: 400
-  textAlign: "left"
-  color: "rgba(247,203,119,1)"

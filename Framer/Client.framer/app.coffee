@@ -93,6 +93,12 @@ ab_interp = require "ab_interp"
 #endregion
 #region Concession
 ab_conc = require "ab_conc"
+ƒ("concession_But_No").on Events.Tap, ->
+  data.conc = false
+  flow.showNext ƒ("aB_Employment")
+ƒ("concession_But_Yes").on Events.Tap, ->
+  data.conc = true
+  flow.showNext ƒ("aB_Summary_Text")
 #endregion
 #region Employment
 ab_employ = require "ab_employ"
@@ -105,7 +111,9 @@ for i in aB_Employment.ƒƒ("*But*")
       print data
       if /[Uu]n/.test(val) then flow.showNext(ƒ("check"))
       else if /Casual/i.test(val) then flow.showNext(ƒ("aB_HourIncome"))
-      else flow.showNext(ƒ("aB_WeekIncome"))
+      else
+        flow.showNext(ƒ("aB_WeekIncome"))
+        ƒ("weekIncome_t_Income").text = "What is #{isSelf(false)} weekly income after tax?"
 #endregion
 
 #region WeekIncome"
@@ -116,6 +124,53 @@ ab_weekinc = require "ab_weekinc"
 ab_hourinc = require 'ab_hourinc'
 #endregion
 #region Employment Functions
+window.weekRateChoices = [
+  "Below $700"
+  "$700 to $799"
+  "$800 to $899"
+  "$900 to $999"
+  "$1000 to $1099"
+  "$1100 to $1200"
+  "Above $1200"
+]
+isSelf = (v) ->
+  if v then return "your" else return "their"
+window.weekRateLayers = []
+for i in [0...7]
+  a = new Layer
+    name: "_But_#{i}"
+    width: 340
+    height: 240
+    backgroundColor: "transparent"
+  window.rec = new Layer
+    name: "rec_#{i}"
+    backgroundColor: "#FEE9E1"
+    borderColor: "#DA734B"
+    borderWidth: 6
+    borderRadius: 40
+    width: 340
+    height: 240
+    parent: a
+  c = new TextLayer
+    name: "label_#{i}"
+    text: window.weekRateChoices[i]
+    fontSize: 32
+    fontFamily: "Avenir Next"
+    fontWeight: 500
+    color: "rgba(74,74,74,1)"
+    parent: a
+  c.center()
+  weekRateLayers.push(a)
+
+
+moneyGrid = new GridLayer
+  name: "aB_WeekIncome_money"
+  layers: weekRateLayers
+  columns: 4
+  rows: 2
+  marginColumn: 50
+  marginRow: 70
+
 
 #endregion
 #region NDOB
@@ -249,6 +304,16 @@ aB_Grid.center()
 #endregion
 check = aB_WeekIncome.copy()
 check.name = 'check'
+ab_summary = require "ab_summary"
+prettyfy = (dat) ->
+  reto = ""
+  for key,val of dat
+    reto += key+":"+val+" "
+  return reto
+aB_Summary_Text.on "change:parent", ->
+  ƒ("Summary_t_Text").text = "#{prettyfy window.data}"
+  ƒ("Summary_t_Text").x = Align.center
+
 #region flow setup
 window.flow.bringToFront()
 for i in ƒƒ("aB*")
@@ -258,6 +323,9 @@ aB_Heading.bringToFront()
 flow.x = (Screen.width - aB_Splash.width) / 2
 flow.showNext(ƒ("aB_Splash"), scroll: false)
 flow.backgroundColor = "#FAFAFA"
+moneyGrid.parent = aB_WeekIncome
+ƒ("aB_WeekIncome_money").center()
+ƒ("aB_WeekIncome_money").y = ƒ("aB_WeekIncome_money").y+80
 #endregion
 #region Button Setup
 for i in ƒƒ("*But_*")
@@ -286,3 +354,4 @@ for i in ƒƒ("*But_*")
   if (i.name.match(/Next$/))
     i.ƒ("rec*").borderWidth = 6
 #endregion
+#flow.showNext(ƒ("aB_Concession"))

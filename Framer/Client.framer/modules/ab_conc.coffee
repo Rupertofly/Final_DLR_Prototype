@@ -61,14 +61,15 @@ label_27 = new TextLayer
 concession_t_Card = new TextLayer
   name: "concession_t_Card"
   parent: concession_Body
-  x: 269
+  x: Align.center
   y: 340
-  text: "Do you have a current Centrelink benefit card Or Pensioner Concession Card"
+  text: "Do you have a current Centrelink benefit card  or Pensioner Concession Card"
   fontSize: 72
   fontFamily: "Avenir Next"
   fontWeight: 600
   textAlign: "center"
   color: "rgba(74,74,74,1)"
+  width: 1400
 
 concession_But_No = new Layer
   name: "concession_But_No"
