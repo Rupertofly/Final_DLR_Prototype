@@ -4,67 +4,8 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c53c1eb7-ab20-47bf-9abe-506828fc1181" name="Default" comment="some changes">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/bin/cake" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/bin/coffee" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/lib/coffee-script/browser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/lib/coffee-script/cake.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/lib/coffee-script/coffee-script.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/lib/coffee-script/command.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/lib/coffee-script/grammar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/lib/coffee-script/helpers.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/lib/coffee-script/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/lib/coffee-script/lexer.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/lib/coffee-script/nodes.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/lib/coffee-script/optparse.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/lib/coffee-script/parser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/lib/coffee-script/register.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/lib/coffee-script/repl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/lib/coffee-script/rewriter.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/lib/coffee-script/scope.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/lib/coffee-script/sourcemap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/register.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Framer/Client.framer/coffee-script/repl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Sketch/.exportedArtboards/Sketch_File (1)/B_Contact.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Sketch/.exportedArtboards/Sketch_File (1)/B_Help.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Sketch/.exportedArtboards/Sketch_File (1)/B_Interpreter.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Sketch/.exportedArtboards/Sketch_File (1)/B_Language.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Sketch/.exportedArtboards/Sketch_File (1)/B_NDOB.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Sketch/.exportedArtboards/Sketch_File (1)/B_ReadSpeak.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Sketch/.exportedArtboards/Sketch_File (1)/B_Splash.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Sketch/.exportedArtboards/Sketch_File (1)/B_conc.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Sketch/.exportedArtboards/Sketch_File (1)/B_employment.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Sketch/.exportedArtboards/Sketch_File/AB_Concession.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Sketch/.exportedArtboards/Sketch_File/AB_Contact.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Sketch/.exportedArtboards/Sketch_File/AB_Employment.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Sketch/.exportedArtboards/Sketch_File/AB_Help.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Sketch/.exportedArtboards/Sketch_File/AB_HourIncome.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Sketch/.exportedArtboards/Sketch_File/AB_Interpreter.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Sketch/.exportedArtboards/Sketch_File/AB_Language.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Sketch/.exportedArtboards/Sketch_File/AB_NDOB.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Sketch/.exportedArtboards/Sketch_File/AB_ReadSpeak.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Sketch/.exportedArtboards/Sketch_File/AB_Splash.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Sketch/.exportedArtboards/Sketch_File/AB_WeekIncome.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framer/Client.framer/framer/.bookmark" afterPath="$PROJECT_DIR$/Framer/Client.framer/framer/.bookmark" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sketch/Sketch_File.sketch" afterPath="$PROJECT_DIR$/Sketch/Sketch_File.sketch" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
+    <list default="true" id="c53c1eb7-ab20-47bf-9abe-506828fc1181" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framer/Client.framer/app.coffee" afterPath="$PROJECT_DIR$/Framer/Client.framer/app.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framer/Client.framer/framer/config.json" afterPath="$PROJECT_DIR$/Framer/Client.framer/framer/config.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framer/Client.framer/framer/framer.init.js" afterPath="$PROJECT_DIR$/Framer/Client.framer/framer/framer.init.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framer/Client.framer/framer/framer.js" afterPath="$PROJECT_DIR$/Framer/Client.framer/framer/framer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framer/Client.framer/framer/framer.js.map" afterPath="$PROJECT_DIR$/Framer/Client.framer/framer/framer.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framer/Client.framer/framer/framer.modules.js" afterPath="$PROJECT_DIR$/Framer/Client.framer/framer/framer.modules.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framer/Client.framer/modules/ab_conc.coffee" afterPath="$PROJECT_DIR$/Framer/Client.framer/modules/ab_conc.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framer/Client.framer/modules/ab_hourinc.coffee" afterPath="$PROJECT_DIR$/Framer/Client.framer/modules/ab_hourinc.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framer/Client.framer/modules/ab_ndob.coffee" afterPath="$PROJECT_DIR$/Framer/Client.framer/modules/ab_ndob.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framer/Client.framer/modules/ab_summary.coffee" afterPath="$PROJECT_DIR$/Framer/Client.framer/modules/ab_summary.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framer/Client.framer/modules/ab_weekinc.coffee" afterPath="$PROJECT_DIR$/Framer/Client.framer/modules/ab_weekinc.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Framer/Client.framer/modules/myModule.coffee" afterPath="$PROJECT_DIR$/Framer/Client.framer/modules/myModule.coffee" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -420,12 +361,20 @@
       <workItem from="1507454707103" duration="2748000" />
       <workItem from="1507944384293" duration="3912000" />
       <workItem from="1507952351727" duration="5621000" />
-      <workItem from="1508031778381" duration="9557000" />
+      <workItem from="1508031778381" duration="9584000" />
     </task>
+    <task id="LOCAL-00001" summary="some changes">
+      <created>1508047155381</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1508047155381</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22225000" />
+    <option name="totallyTimeSpent" value="22252000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="1054" extended-state="0" />
@@ -684,6 +633,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
           <caret line="0" column="2656" lean-forward="false" selection-start-line="0" selection-start-column="2656" selection-end-line="0" selection-end-column="2656" />
+          <folding />
         </state>
       </provider>
       <provider editor-type-id="sourcemapFileViewerProvider">
@@ -709,6 +659,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
