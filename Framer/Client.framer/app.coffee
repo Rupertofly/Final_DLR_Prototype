@@ -4,8 +4,11 @@
 # --- Setup
 {ƒ, ƒƒ} = require 'findModule'
 window.flow = new FlowComponent
+Framer.Device.deviceType = "apple-ipad-air-2-space-gray"
+Framer.Device.orientation = 90
 
 
+#region grid lay
 class GridLayer extends Layer
   constructor: (opt = {})->
     sizeTemplate = opt.layers[0]
@@ -32,7 +35,7 @@ class GridLayer extends Layer
     if opt.destroyRemaining
       for layer in opt.layers
         layer.destroy() if layer.superLayer isnt @
-
+#endregion
 InputModule = require 'input-framer/input'
 Screen.backgroundColor = 'rgba(250,250,250,1)'
 
@@ -50,7 +53,8 @@ ab_help = require "ab_help"
 #region ReadSpeak
 ab_readspeak = require "ab_readspeak"
 
-aB_ReadSpeak.ƒ("*Next").visible = false
+Utils.delay 0.1, ->
+	aB_ReadSpeak.ƒ("*Next").visible = false
 R_Filled = false
 S_Filled = false
 ReadSpeak_Filled = false
@@ -78,7 +82,7 @@ updateSel()
     if v is 1 then sAb = k
   data.ReadAbility = rAb
   data.SpeakAbility = sAb
-  print data
+
   flow.showNext ƒ("aB_NDOB")
 
 #endregion
@@ -89,16 +93,11 @@ ab_interp = require "ab_interp"
   flow.showNext ƒ("aB_Contact")
 ƒ("interp_But_yes").on Events.Tap, ->
   flow.showOverlayCenter aB_Grid
-  print ƒ("aB_Grid")
+
 #endregion
 #region Concession
 ab_conc = require "ab_conc"
-ƒ("concession_But_No").on Events.Tap, ->
-  data.conc = false
-  flow.showNext ƒ("aB_Employment")
-ƒ("concession_But_Yes").on Events.Tap, ->
-  data.conc = true
-  flow.showNext ƒ("aB_Summary_Text")
+
 #endregion
 #region Employment
 ab_employ = require "ab_employ"
@@ -108,7 +107,7 @@ for i in aB_Employment.ƒƒ("*But*")
     i.on Events.Tap, ->
       val = (@name.split "_")[2]
       data.employment = val
-      print data
+
       if /[Uu]n/.test(val) then flow.showNext(ƒ("check"))
       else if /Casual/i.test(val) then flow.showNext(ƒ("aB_HourIncome"))
       else
@@ -123,6 +122,35 @@ ab_weekinc = require "ab_weekinc"
 #region HourIncome
 ab_hourinc = require 'ab_hourinc'
 #endregion
+ab_yass = require "ab_yass"
+aB_dependent = aB_Concession.copy()
+aB_dependent.name = aB_dependent.name.replace /[Cc]onc[^_]+/i, "Dependent"
+
+for i in aB_dependent.descendants
+  n = i.name
+  if n.match /[Cc]onc[^_]+/i
+    i.name = n.replace /[Cc]onc[^_]+/i, "Dependent"
+  if n.match /_i_/ then i.image = ""
+  if n.match /_t_/ then i.text = "Do you have a financially dependent spouse or child?"
+  if n.match /Yes/
+    i.onTap ->
+      flow.showNext(ƒ("aB_Summary"))
+      sumFill()
+  if n.match /No/
+    i.onTap ->
+      flow.showNext(ƒ("aB_Depend"))
+
+aB_depo = aB_dependent.copy()
+aB_depo.name = aB_depo.name.replace /Dependent/i, "Depo"
+for i in aB_depo.descendants
+  n = i.name
+  if n.match /Depen[^_]+/
+    i.name = n.replace /Depen[^_]+/, "Depo"
+    print i
+  if n.match /_i_/ then i.image = ""
+  if n.match /_t_/ then i.text = "Do you reliably receive financial support from a relative or spouse?"
+
+
 #region Employment Functions
 window.weekRateChoices = [
   "Below $700"
@@ -154,17 +182,22 @@ for i in [0...7]
   c = new TextLayer
     name: "label_#{i}"
     text: window.weekRateChoices[i]
-    fontSize: 32
+    fontSize: 38
     fontFamily: "Avenir Next"
     fontWeight: 500
     color: "rgba(74,74,74,1)"
     parent: a
   c.center()
   weekRateLayers.push(a)
-
-
+  a.on Events.Tap, ->
+    l = @ƒ("label*").text
+    if not /Below/.test(l)
+      data.income = Number l.match /\d+\b/
+    else
+      data.income = Number(l.match /\d+\b/) - 300
+    flow.showNext aB_dependent
 moneyGrid = new GridLayer
-  name: "aB_WeekIncome_money"
+  name: "WeekIncome_money"
   layers: weekRateLayers
   columns: 4
   rows: 2
@@ -173,6 +206,7 @@ moneyGrid = new GridLayer
 
 
 #endregion
+
 #region NDOB
 ab_ndob = require 'ab_ndob'
 #endregion
@@ -261,6 +295,39 @@ app4Aid = new TextLayer
   textAlign: "left"
   color: "rgba(74,74,74,1)"
 
+cheat_button = new Layer
+  name: "hax0rs"
+  parent: aB_Heading
+  x:0
+  y:0
+  height:140
+  width:140
+  backgroundColor: "transparent"
+cheat_button.on Events.Tap, ->
+  xf = ƒƒ("aB_*")
+  yf = []
+  lx = []
+  for i in xf
+    print i
+    lx[i] = i.name
+    g = new Layer
+      html: "#{i.name}"
+      width:300
+      height:300
+      backgroundColor: "rgb(50,50,50,0.8)"
+    g.onTap  ->
+      flow.showPrevious()
+      flow.showNext ƒ("#{@html}")
+    yf.push g
+  cheat_lay = new GridLayer
+    name: "cheat_lay"
+    layers: yf
+    columns: 5
+    rows: 4
+  flow.showOverlayCenter cheat_lay
+
+
+
 #endregion
 #region Interp
 InterpArray = []
@@ -305,15 +372,13 @@ aB_Grid.center()
 check = aB_WeekIncome.copy()
 check.name = 'check'
 ab_summary = require "ab_summary"
+ab_nayy = require "ab_nayy"
 prettyfy = (dat) ->
   reto = ""
   for key,val of dat
     reto += key+":"+val+" "
   return reto
-aB_Summary_Text.on "change:parent", ->
-  ƒ("Summary_t_Text").text = "#{prettyfy window.data}"
-  ƒ("Summary_t_Text").x = Align.center
-
+print aB_Summary.descendants
 #region flow setup
 window.flow.bringToFront()
 for i in ƒƒ("aB*")
@@ -324,14 +389,15 @@ flow.x = (Screen.width - aB_Splash.width) / 2
 flow.showNext(ƒ("aB_Splash"), scroll: false)
 flow.backgroundColor = "#FAFAFA"
 moneyGrid.parent = aB_WeekIncome
-ƒ("aB_WeekIncome_money").center()
-ƒ("aB_WeekIncome_money").y = ƒ("aB_WeekIncome_money").y+80
+ƒ("WeekIncome_money").center()
+ƒ("WeekIncome_money").y = ƒ("WeekIncome_money").y+80
 #endregion
 #region Button Setup
 for i in ƒƒ("*But_*")
   j = i.ƒ("rec*")
-  if i.ƒ("label*") isnt undefined
-    i.ƒ("label*").y = Align.center
+  print j.name
+  if i.ƒ("labe*") isnt undefined
+    i.ƒ("labe*").y = Align.center
   j.states.off =
     borderWidth: j.states.default.borderWidth
     scale: 1
@@ -354,4 +420,4 @@ for i in ƒƒ("*But_*")
   if (i.name.match(/Next$/))
     i.ƒ("rec*").borderWidth = 6
 #endregion
-#flow.showNext(ƒ("aB_Concession"))
+#flow.showNext(ƒ("aB_HourIncome"))

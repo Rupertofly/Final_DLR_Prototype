@@ -87,6 +87,7 @@ weekIncome_But_Next = new Layer
   backgroundColor: "transparent"
   width: 440
   height: 200
+  visible: false
 
 rectangle_37 = new Layer
   name: "rectangle_37"
@@ -99,6 +100,7 @@ rectangle_37 = new Layer
   borderRadius: 40
   borderColor: "rgba(151,151,151,1)"
   borderWidth: 2
+
 
 label_37 = new TextLayer
   name: "label_37"

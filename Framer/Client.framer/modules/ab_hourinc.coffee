@@ -1,3 +1,6 @@
+{ƒ, ƒƒ} = require 'findModule'
+InputModule = require 'input-framer/input'
+
 window.aB_HourIncome = new Layer
   name: "aB_HourIncome"
   x: 0
@@ -89,6 +92,7 @@ hourIncome_i_breifcase = new Layer
   y: 68
   width: 200
   height: 180.69020689655176
+  image: "images/Employment_i_Breifcase.svg"
 
 hourIncome_But_Next = new Layer
   name: "hourIncome_But_Next"
@@ -109,7 +113,7 @@ rectangle_39 = new Layer
   backgroundColor: "rgba(250,242,232,1)"
   borderRadius: 40
   borderColor: "rgba(151,151,151,1)"
-  borderWidth: 2
+  borderWidth: 6
 
 label_39 = new TextLayer
   name: "label_39"
@@ -148,13 +152,40 @@ hourlyRate = new TextLayer
   name: "hourlyRate"
   parent: hourIncome_Txt_Rate
   x: 21
-  y: 12
-  text: "Hourly Rate"
-  fontSize: 72
+  y: 18
+  height: hourIncome_Txt_Rate.height
+  text: "$"
+hourlyRate.style =
+  fontSize: "72px"
   fontFamily: "Avenir Next"
-  fontWeight: 400
+  fontWeight: "400px"
   textAlign: "left"
   color: "rgba(247,203,119,1)"
+
+
+hourlyRate = new InputModule.Input
+  name: "hourlyRate"
+  parent: hourIncome_Txt_Rate
+  x: 80
+  y: 0
+  height: hourIncome_Txt_Rate.height
+  width:500
+  text: "00.0"
+  type: "number"
+hourlyRate.style =
+  fontSize: "72px"
+  fontFamily: "Avenir Next"
+  fontWeight: "400px"
+  textAlign: "left"
+  color: "rgba(247,203,119,1)"
+
+hourlyRate.on "input", ->
+  if (hoursPerWeek.value isnt ("" or "00")) and (hourlyRate.value isnt ("" or "00.0"))
+    hourIncome_But_Next.visible = true
+hourlyRate.on "keyup", (event) ->
+  if event.which is 13 then hourlyRate.input.blur()
+hourlyRate.onFocus ->
+  if @value is "00.0" then @value = ""
 
 hourIncome_Txt_Hours = new Layer
   name: "hourIncome_Txt_Hours"
@@ -177,14 +208,29 @@ rectangle2_3 = new Layer
   borderColor: "rgba(245,190,85,1)"
   borderWidth: 10
 
-hoursPerWeek = new TextLayer
+hoursPerWeek = new InputModule.Input
   name: "hoursPerWeek"
   parent: hourIncome_Txt_Hours
   x: 21
-  y: 12
+  y: 0
   text: "Hours per Week"
-  fontSize: 72
+  type: "number"
+  height: hourIncome_Txt_Rate.height
+  width:500
+hoursPerWeek.style =
+  fontSize: "72px"
   fontFamily: "Avenir Next"
-  fontWeight: 400
+  fontWeight: "400"
   textAlign: "left"
   color: "rgba(247,203,119,1)"
+
+hoursPerWeek.on "input", ->
+  if (hoursPerWeek.value isnt ("" or "00")) and (hourlyRate.value isnt ("" or "00.0"))
+    hourIncome_But_Next.visible = true
+hoursPerWeek.on "keyup", (event) ->
+  if event.which is 13 then hoursPerWeek.input.blur()
+
+hourIncome_But_Next.visible = false
+hourIncome_But_Next.on Events.Tap, ->
+  window.data.income = (Number(hoursPerWeek.value)*Number(hourlyRate.value))
+  flow.showNext ƒ("aB_Summary")

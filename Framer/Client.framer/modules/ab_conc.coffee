@@ -1,3 +1,5 @@
+{ƒ, ƒƒ} = require 'findModule'
+
 window.aB_Concession = new Layer
   name: "aB_Concession"
   x: 0
@@ -96,7 +98,7 @@ label_28 = new TextLayer
   name: "label_28"
   parent: concession_But_No
   x: 0
-  y: 0
+  y: Align.center
   width: 600
   text: "No"
   fontSize: 72
@@ -130,7 +132,7 @@ label_29 = new TextLayer
   name: "label_29"
   parent: concession_But_Yes
   x: 0
-  y: 0
+  y: Align.center
   width: 600
   text: "Yes"
   fontSize: 72
@@ -147,3 +149,11 @@ concession_i_Centrelink = new Layer
   width: 199.99937163972305
   height: 195.39986654815797
   image: "images/Concession_i_Centrelink.svg"
+
+ƒ("concession_But_No").on Events.Tap, ->
+  data.conc = false
+  flow.showNext ƒ("aB_Employment")
+ƒ("concession_But_Yes").on Events.Tap, ->
+  data.conc = true
+  flow.showNext ƒ("aB_Summary")
+  sumFill()

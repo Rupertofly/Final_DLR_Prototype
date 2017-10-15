@@ -93,11 +93,12 @@ nDOB_But_Next = new Layer
   width: 440
   height: 200
 nDOB_But_Next.on Events.Tap, ->
-  print data.ReadAbility
-  print data.ReadAbility is ("rFluent")
   if name.value isnt ("Name" or "") and day.value isnt ""
     data.name = name.value
     data.Dob = day.value
+    ƒ("yass_t_Heading").text = """Thank you #{data.name.match(/\w+/)}
+    Please take a seat and we will be with you shortly"""
+    ƒ("nayy_t_Heading").text = "I’m Sorry #{data.name.match /\w+/} You do not qualify for the Duty Lawyer service"
     if data.SpeakAbility == "sGood" or data.SpeakAbility == "sFluent"
       flow.showNext ƒ("aB_Contact")
       data.interp = "none"
@@ -212,6 +213,7 @@ day = new InputModule.Input
   parent: nDOB_But_Day
   x: 15
   y: 12
+  virtualKeyboard: false
   height: 100
   width: 700
   text: "DOB"
@@ -228,12 +230,15 @@ day.style =
 day.input.max = "2010-01-01"
 day.input.value = "2010-01-01"
 nDOB_But_Next.visible = false
+day.input.type = "date"
 day.on "input", ->
   if name.value isnt ("Name" or "") and day.value isnt ""
     nDOB_But_Next.visible = true
 name.on "input", ->
   if name.value isnt ("Name" or "") and day.value isnt ""
     nDOB_But_Next.visible = true
+
+    print ƒ("yass_t_Heading").text
 name.on "keyup", (event) ->
   if event.which is 13 then name.input.blur()
 name.onFocus ->
