@@ -36,6 +36,7 @@ class GridLayer extends Layer
       for layer in opt.layers
         layer.destroy() if layer.superLayer isnt @
 #endregion
+
 InputModule = require 'input-framer/input'
 Screen.backgroundColor = 'rgba(250,250,250,1)'
 
