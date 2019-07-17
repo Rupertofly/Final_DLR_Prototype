@@ -2,7 +2,6 @@
 Screen.backgroundColor = "#00AAFF"
 
 # Scale all content by 50%
-Framer.Device.contentScale = 1
 merge=(xs...) ->
   if xs?.length>0
     tap {},(m)->m[k]=v for k,v of x for x in xs
