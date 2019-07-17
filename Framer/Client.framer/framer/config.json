@@ -1,18 +1,20 @@
 {
   "orientation" : 90,
-  "updateDelay" : 0.3,
-  "cachedDeviceHeight" : 2048,
+  "updateDelay" : 0.29999999999999999,
+  "designModeSelected" : 0,
+  "cachedDeviceHeight" : 1536,
   "contentScale" : 1,
-  "cachedDeviceWidth" : 1536,
+  "cachedDeviceWidth" : 2048,
   "fullScreen" : false,
+  "deviceType" : "apple-ipad-air-2-space-gray",
   "sharedPrototype" : 0,
   "propertyPanelToggleStates" : {
     "Filters" : false
   },
-  "deviceType" : "apple-ipad-air-2-space-gray",
   "projectId" : "3E7D9A40-12F5-419A-8DFA-E489699ABC97",
   "deviceOrientation" : 90,
   "selectedHand" : "",
+  "showBezel" : 0,
   "foldedCodeRanges" : [
 
   ],

@@ -372,8 +372,7 @@ for v,k of ppl
     backgroundColor: "transparent"
   l = 0
   for k1,v1 of k
-    print v1
-    print k1
+
     @["#{k1}"] = new TextLayer
       parent: contentsEntries[v]
       y: Align.center

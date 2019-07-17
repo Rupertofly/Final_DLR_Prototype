@@ -147,7 +147,6 @@ for i in aB_depo.descendants
   n = i.name
   if n.match /Depen[^_]+/
     i.name = n.replace /Depen[^_]+/, "Depo"
-    print i
   if n.match /_i_/ then i.image = ""
   if n.match /_t_/ then i.text = "Do you reliably receive financial support from a relative or spouse?"
 
@@ -309,7 +308,6 @@ cheat_button.on Events.Tap, ->
   yf = []
   lx = []
   for i in xf
-    print i
     lx[i] = i.name
     g = new Layer
       html: "#{i.name}"
@@ -379,7 +377,6 @@ prettyfy = (dat) ->
   for key,val of dat
     reto += key+":"+val+" "
   return reto
-print aB_Summary.descendants
 #region flow setup
 window.flow.bringToFront()
 for i in ƒƒ("aB*")
@@ -396,7 +393,6 @@ moneyGrid.parent = aB_WeekIncome
 #region Button Setup
 for i in ƒƒ("*But_*")
   j = i.ƒ("rec*")
-  print j.name
   if i.ƒ("labe*") isnt undefined
     i.ƒ("labe*").y = Align.center
   j.states.off =

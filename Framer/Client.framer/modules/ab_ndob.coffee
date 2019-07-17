@@ -238,7 +238,6 @@ name.on "input", ->
   if name.value isnt ("Name" or "") and day.value isnt ""
     nDOB_But_Next.visible = true
 
-    print ƒ("yass_t_Heading").text
 name.on "keyup", (event) ->
   if event.which is 13 then name.input.blur()
 name.onFocus ->

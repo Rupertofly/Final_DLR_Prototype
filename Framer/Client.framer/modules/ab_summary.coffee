@@ -176,5 +176,4 @@ label_2 = new TextLayer
 
 aB_Summary.on "change:parent", ->
   sumFill()
-  print "bbom"
 
