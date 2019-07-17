@@ -1,3 +1,5 @@
+# Define and set custom device
+
 ppl = [
   {
     Name: "Gazza Fredrickson"
@@ -76,7 +78,7 @@ class AI extends Layer
       parent: @
       point: Align.center
       height: 80
-      width: @width
+      width: @width - 32
       borderRadius: 12
       borderWidth:6
       borderColor: "#FBA747"
@@ -86,7 +88,7 @@ class AI extends Layer
       parent: @
       point: Align.center
       height: 80
-      width: @width - 12
+      width: options.width - 64
       setup: false
       textAlign: "right"
       virtualKeyboard: false
@@ -104,6 +106,7 @@ class AI extends Layer
       name: "#{@name}_lb"
       x: Align.center
       y: @["input"].y - 48
+      fontSize: 24
       fontFamily: 'Avenir Next'
       fontWeight: 600
       textAlign: 'center'
@@ -133,7 +136,7 @@ class AT extends Layer
 
     toggle = new Layer
       parent: this
-      width: @toggleSize
+      width: 10
       height: @thumbSize
       borderRadius: @toggleRadius
       shadowSpread: @toggleSize / 50
@@ -306,12 +309,13 @@ dataLayers = []
 for i,v of datas
   dataLayers[i] = new AI
     name: v
-    width: 400
-    height: 160
+    width: (screen.width-100)/8
+    height: screen.height/8
     indi: i
+ 
 body = new PageComponent
   parent: edit
-  width: Screen.width-100
+  width: Screen.width
   height: Screen.height - 200
   x:50
   y:200
@@ -329,6 +333,8 @@ p1 = new Layer
 inputgrid = new GridLayer
   layers: dataLayers
   parent: p1
+  width: p1.width-200
+  height: p1.height/2
   columns: 4
   rows: 4
   margin: 64
